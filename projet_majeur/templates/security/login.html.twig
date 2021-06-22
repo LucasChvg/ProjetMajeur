@@ -3,7 +3,7 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-
+<div class="col-md-6 align-content-center">
 <form method="post" class="body">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -14,7 +14,7 @@
             You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
         </div>
     {% endif %}
-    <center>
+    <div class="text-center">
     <h1 class="h3 mb-3 font-weight-normal">Connexion à xSmartFireKiller2000</h1>
 
     <label for="inputUsername">Username</label>
@@ -25,13 +25,15 @@
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
     >
-    </center>
+        <br>
+
 
 
     <button class="btn btn-lg btn-primary" type="submit">
         Sign in
     </button>
+    </div>
 
 </form>
-
+</div>
 {% endblock %}
