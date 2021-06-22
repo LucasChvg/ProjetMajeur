@@ -8,12 +8,19 @@
         {% block stylesheets %}
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
+        <link href="{{ asset('css/final.css') }}" type="text/css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/final.css') }}">
 
         {% block javascripts %}
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
+
+
     </head>
     <body>
         {% block body %}{% endblock %}
+
+        <script src="{{ asset('js/nicepage.js') }}"></script>
+        <script src="{{ asset('js/jquery-1.9.1.min.js') }}"></script>
     </body>
 </html>
