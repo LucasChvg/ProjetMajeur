@@ -8,10 +8,10 @@
 
 
 
-<body>
-<center>
-<h1 class="text-center col-md-6 mt-50">xSmartFireKiller2000</h1>
-        <table class="table col-md-6 mt-50">
+    <body class="text-center m-xl-5">
+    <h1 class="text-center col-md-8 mb-50">xSmartFireKiller2000</h1>
+    <div class="row col-md-12">
+        <table class="table table-dark col-md-8">
             <thead>
             <tr>
                 <th scope="col">Numéro</th>
@@ -22,30 +22,26 @@
             </tr>
             </thead>
             <tbody>
-    {% for data in data %}
-            <tr>
-                <th scope="row">{{ data.idData }}</th>
-                <th scope="row">{{ data.date|date('d/m/Y') }}</th>
-                <td>{{ data.temperature }} °C</td>
-                <td>{{ data.gaz }}</td>
-                {% if data.incident == 1 %}
-                    <th scope="row">Incident</th>
-                    <th>
-                        <button type="button" class="btn btn-outline-danger">Arrêter l'alarme</button>
-                    </th>
-                {% else %}
-                    <th scope="row">Pas d'incident</th>
-                {% endif %}
-            </tr>
-    {% endfor %}
+            {% for data in data %}
+                <tr>
+                    <th scope="row">{{ data.idData }}</th>
+                    <th scope="row">{{ data.date|date('d/m/Y') }}</th>
+                    <td>{{ data.temperature }} °C</td>
+                    <td>{{ data.gaz }}</td>
+                    {% if data.incident == 1 %}
+                        <th scope="row">Incident</th>
+                    {% else %}
+                        <th scope="row">Pas d'incident</th>
+                    {% endif %}
+                </tr>
+            {% endfor %}
             </tbody>
         </table>
-</center>
-</body>
-
-
-
-
+        <div class="col-md-4">
+        <button type="button" class="btn btn-outline-danger col-md-6">Arrêter l'alarme</button>
+        </div>
+    </div>
+    </body>
 
 
 {% endblock %}
