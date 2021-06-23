@@ -9,14 +9,16 @@
 
 
 <body>
+<center>
 <h1 class="text-center col-md-6 mt-50">xSmartFireKiller2000</h1>
         <table class="table col-md-6 mt-50">
             <thead>
             <tr>
                 <th scope="col">Numéro</th>
                 <th scope="col">Date</th>
-                <th scope="col">temperature</th>
+                <th scope="col">Temperature</th>
                 <th scope="col">Gaz</th>
+                <th scope="col">Incident</th>
             </tr>
             </thead>
             <tbody>
@@ -24,13 +26,18 @@
             <tr>
                 <th scope="row">{{ data.idData }}</th>
                 <th scope="row">{{ data.date|date('d/m/Y') }}</th>
-                <td>{{ data.temperature }}</td>
+                <td>{{ data.temperature }} °C</td>
                 <td>{{ data.gaz }}</td>
+                {% if data.incident == 1 %}
+                    <th scope="row">Incident</th>
+                {% else %}
+                    <th scope="row">Pas d'incident</th>
+                {% endif %}
             </tr>
     {% endfor %}
             </tbody>
         </table>
-
+</center>
 </body>
 
 
