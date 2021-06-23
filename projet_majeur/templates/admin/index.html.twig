@@ -30,6 +30,9 @@
                 <td>{{ data.gaz }}</td>
                 {% if data.incident == 1 %}
                     <th scope="row">Incident</th>
+                    <th>
+                        <button type="button" class="btn btn-outline-danger">Arrêter l'alarme</button>
+                    </th>
                 {% else %}
                     <th scope="row">Pas d'incident</th>
                 {% endif %}
