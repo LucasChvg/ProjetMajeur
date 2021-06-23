@@ -51,6 +51,7 @@ while(True):
         #check if values are too high
         #And insert data into the database
         if(VAL_GAZ > valeurMaxGaz or VAL_TEMP > valeurMaxTemp):
+            #dbc.execute("INSERT INTO data_sensor(date,temperature,gaz, incident) VALUES (%s,%s,%s,%s);", (now, VAL_TEMP, VAL_GAZ, 1))
             dbc.execute("INSERT INTO data_sensor(date,temperature,gaz) VALUES (%s,%s,%s);", (now, VAL_TEMP, VAL_GAZ))
             dbc.execute("INSERT INTO data_incident(date,i_temperature,i_gaz) VALUES (%s,%s,%s);", (now, VAL_TEMP, VAL_GAZ)) 
             #dbc.execute("UPDATE data SET id_plant_capteur='%s', data_eau='%s', data_temperature='%s', data_humidite='%s', data_expo='%s' WHERE id_plant_capteur = '%s'; ", (plant1,VAL_NIV_EAU,VAL_T,VAL_HTERRE_1,VAL_LUM,plant1))
@@ -59,6 +60,7 @@ while(True):
             
         else:
             if(VAL_GAZ != ""):
+                #dbc.execute("INSERT INTO data_sensor(date,temperature,gaz, incident) VALUES (%s,%s,%s,%s);", (now, VAL_TEMP, VAL_GAZ, 0))
                 dbc.execute("INSERT INTO data_sensor(date,temperature,gaz) VALUES (%s,%s,%s);", (now, VAL_TEMP, VAL_GAZ))
                 #dbc.execute("UPDATE data SET id_plant_capteur='%s', data_eau='%s', data_temperature='%s', data_humidite='%s', data_expo='%s' WHERE id_plant_capteur = '%s'; ", (plant1,VAL_NIV_EAU,VAL_T,VAL_HTERRE_1,VAL_LUM,plant1))
                 db.commit()
