@@ -16,6 +16,7 @@ Ce GitHub contient 4 dossiers différents :
 
 - Python
   1) xSmart.py : Script permettant de se connecter à la base de donnée. Il permet de lire les données envoyées par les capteurs. Si elles sont dans un format correct, elles sont enregistrées dans la base de données.
+Ce script permet, de plus, de déclancher l'alarme si les données récupérées sont trop élevées.
 
 - bdd sql
   1) data.sql : Script pour créer les tables de la base de données.
