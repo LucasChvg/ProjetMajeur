@@ -1,4 +1,4 @@
-# ProjetMajeur
+# ProjetMajeure
 Bienvenue au projet xSmartFireKiller2000.
 Membres du projet : Lucas PHILIPPE, Manea MAZELLIER, Lucas CHAUVIGNE, Judickaelle PELLETIER, Martin RAIMBAULT, Flavien COMET.
 
@@ -7,7 +7,7 @@ Membres du projet : Lucas PHILIPPE, Manea MAZELLIER, Lucas CHAUVIGNE, Judickaell
 Ce GitHub contient 4 dossiers différents :
 
 - Arduino
-  1) NodeMcvtest : Code pour l'arduino pour utiliser son module WiFi (test)
+  1) NodeMcvtest : Code pour l'arduino pour utiliser son module WiFi (test).
   2) Temp_fumee : Code pour le détecteur de fumée et le capteur d'humidité/température. Il permet de faire changer de couleur la Led lors d'un incident.
   3) detecteurMQ : Code pour lancer l'alarme sonore en fonction de la couleur de la Led.
   4) dht11 : Code pour calculer la température et le taux d'humidité ressenti.
@@ -30,30 +30,34 @@ Ce GitHub contient 4 dossiers différents :
  
  
 PARTIE CYBER : 
-Pour la partie sécurisation de notre objet et du réseau, nous avons divisé le travail en 4 parties :
+Pour la partie sécurisation de notre objet, nous avons divisé le travail en 4 parties :
 
 - ftp
-  1) Authentification par clé
-  2) Changement de port de connexion
-  3) Création d'un utilisateur unique
-  4) Autoriser l'accès à un seul dossier
-  5) Créer un nombre maximal de connexions
+  1) Authentification par clé.
+  2) Changement de port de connexion.
+  3) Création d'un utilisateur unique.
+  4) Autoriser l'accès à un seul dossier.
+  5) Créer un nombre maximal de connexions.
 
 - ssh
-  1) Authentification par clé
-  2) Changement de port de connexion
-  3) Empêcher la connexion Root
-  4) Créer un nombre maximal de connexions
+  1) Authentification par clé.
+  2) Changement de port de connexion.
+  3) Empêcher la connexion Root.
+  4) Créer un nombre maximal de connexions.
 
 - Apache2
-  1) Limiter les attaques DoS dans le dossier apache2.conf
-  2) Limiter les informations visibles (version apache, php...)
-  3) Empêcher le parcours des répertoires avec l'option "Indexes"
-  4) Empêcher l'utilsiation de liens symboliques avec l'option "FollowSymLinks"
-  5) Gérer l'accès des fichiers .htaccess
+  1) Limiter les attaques DoS dans le dossier apache2.conf.
+  2) Limiter les informations visibles (version apache, php...).
+  3) Empêcher le parcours des répertoires avec l'option "Indexes".
+  4) Empêcher l'utilsiation de liens symboliques avec l'option "FollowSymLinks".
+  5) Gérer l'accès des fichiers .htaccess.
 
 - Fail2ban
-  1) installer le service Fail2ban
-  2) Configurer le fichier jail.local
-  3) Ajouter les ports utilisés pour ssh, ftp et apache2
+  1) Installer le service Fail2ban.
+  2) Configurer le fichier jail.local.
+  3) Ajouter les ports utilisés pour ssh, ftp et apache2.
  
+Pour la partie Réseau, nous avons décidé de nous placer en tant que vendeur de l'objet, ainsi nous n'avons pas implémenté de Firewall au sein de notre réseau. Mais pour l'exemple, nous avons pris quelques règles IPtable qui peuvent être utiles dans la sécurisation d'un réseau interne :
+- iptables -A INPUT -p icmp -i $int -s $ANY -d $IP_VM  --icmp-type 255 -j DROP (bloque tous les types de ping)
+- iptables  -A INPUT -i lo -j ACCEPT / iptables  -A OUTPUT -o lo -j ACCEPT (Lorsque tous les trafics sont refusés, permet d'autoriser le trafic local)
+- iptables  -A INPUT -p tcp -i $int -s $ANY -d $IP_VM -m conntrack --ctstate NEW -m tcp --tcp-flags SYN,ACK SYN,ACK -j DROP (bloque les packets TCP mal formés)  
